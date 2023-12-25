@@ -6,7 +6,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tafakkur.subcompose.domain.usecase.UseCases
+import com.tafakkur.subcompose.domain.util.InvalidDiaryException
+import com.tafakkur.subcompose.presentation.utils.DeleteEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +26,8 @@ class DetailViewModel @Inject constructor(
     private val _isLoading = mutableStateOf(DetailState())
     val isLoading: State<DetailState> = _isLoading
 
+    private val _diaryEvent = MutableSharedFlow<DeleteEvent>()
+    val diaryEvent = _diaryEvent.asSharedFlow()
 
     init {
         _isLoading.value = isLoading.value.copy(isLoading = true)
@@ -34,10 +40,26 @@ class DetailViewModel @Inject constructor(
                         description = diary.description,
                         image = diary.image,
                         color = diary.color,
+                        timestamp = diary.timestamp
                     )
                     _isLoading.value = isLoading.value.copy(isLoading = false)
                 }
             }
         }
     }
+    fun onEvent(event: DetailDiaryEvent){
+        when(event){
+            is DetailDiaryEvent.DeleteDiary -> {
+                viewModelScope.launch {
+                    try {
+                        useCases.deleteDiaryCase(diaryDetail.value.toDiary())
+                        _diaryEvent.emit(DeleteEvent.DeleteDiary)
+                    }catch (e: InvalidDiaryException){
+                        _diaryEvent.emit(DeleteEvent.Message(e.message.toString()))
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -2,7 +2,6 @@ package com.tafakkur.subcompose.presentation.add
 
 import android.graphics.Bitmap
 import android.net.Uri
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -52,7 +51,7 @@ class AddDiaryViewModel @Inject constructor(
                 viewModelScope.launch {
                     useCases.getByIdCase(itemId)?.also {diary ->
                         currentId = diary.id
-                        _title.value = title.value.copy(
+                        _title.value = _title.value.copy(
                             text = diary.title,
                             isHintVisible = false
                         )
@@ -60,6 +59,7 @@ class AddDiaryViewModel @Inject constructor(
                             text = diary.description,
                             isHintVisible = false
                         )
+                        _bitmap.value = diary.image
                         _color.intValue = diary.color
                     }
                 }
@@ -104,7 +104,6 @@ class AddDiaryViewModel @Inject constructor(
             is AddDiaryEvent.SaveDiary -> {
                 viewModelScope.launch {
                     try {
-                        Log.d("save", "onEvent: ")
                         useCases.addDiary(
                             Diary(
                                 id = currentId,

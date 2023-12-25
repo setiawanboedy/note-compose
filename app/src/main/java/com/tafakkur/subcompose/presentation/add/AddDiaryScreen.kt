@@ -250,29 +250,44 @@ fun AddDiaryScreen(
                             tint = Color.Black,
                             contentDescription = "add image")
                     }
-                    imageUri?.let {
-                        if (Build.VERSION.SDK_INT < 28){
-                            viewModel.onEvent(AddDiaryEvent.GetImage(
-                                MediaStore.Images.Media.getBitmap(context.contentResolver, it)
-                            ))
-                        }else{
-                            val source = ImageDecoder
-                                .createSource(context.contentResolver,it)
-                            viewModel.onEvent(AddDiaryEvent.GetImage(
-                                ImageDecoder.decodeBitmap(source)
-                            ))
-                        }
+                    if (imageUri != null){
+                        imageUri.let {
+                            if (Build.VERSION.SDK_INT < 28){
+                                viewModel.onEvent(AddDiaryEvent.GetImage(
+                                    MediaStore.Images.Media.getBitmap(context.contentResolver, it)
+                                ))
+                            }else{
+                                val source = ImageDecoder
+                                    .createSource(context.contentResolver,it)
+                                viewModel.onEvent(AddDiaryEvent.GetImage(
+                                    ImageDecoder.decodeBitmap(source)
+                                ))
+                            }
 
-                        bitmap?.let {btm ->
-                            Image(bitmap = btm.asImageBitmap(),
-                                contentDescription =null,
-                                contentScale = ContentScale.Crop,
-                                modifier = modifier
-                                    .height(200.dp)
-                                    .width(width = 200.dp)
-                                    .clip(RoundedCornerShape(size = 10.dp)))
+                            bitmap?.let { btm ->
+                                Image(
+                                    bitmap = btm.asImageBitmap(),
+                                    contentDescription =null,
+                                    contentScale = ContentScale.Crop,
+                                    modifier = modifier
+                                        .height(200.dp)
+                                        .width(width = 200.dp)
+                                        .clip(RoundedCornerShape(size = 10.dp)),
+                                )
+                            }
                         }
+                    }else if(bitmap != null){
+                        Image(
+                            bitmap = bitmap.asImageBitmap(),
+                            contentDescription =null,
+                            contentScale = ContentScale.Crop,
+                            modifier = modifier
+                                .height(200.dp)
+                                .width(width = 200.dp)
+                                .clip(RoundedCornerShape(size = 10.dp)),
+                        )
                     }
+
                 }
             }
         }

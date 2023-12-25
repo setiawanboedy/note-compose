@@ -76,7 +76,7 @@ fun DiaryUIApp(
                 )
             ){
                 val color = it.arguments?.getInt("diaryColor") ?: -1
-                println(color)
+
                 AddDiaryScreen(navigateBack = {
                     navController.navigateUp()
 

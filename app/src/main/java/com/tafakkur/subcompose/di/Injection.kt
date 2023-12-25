@@ -27,7 +27,9 @@ object Injection {
             application,
             DiaryDatabase::class.java,
             DiaryDatabase.DATABASE_NAME
-        ).build()
+        )
+            .createFromAsset("diary_db.sql")
+            .build()
     }
 
     @Provides
