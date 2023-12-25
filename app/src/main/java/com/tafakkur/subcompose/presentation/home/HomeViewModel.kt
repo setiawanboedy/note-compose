@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tafakkur.subcompose.domain.usecase.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,6 +24,16 @@ class HomeViewModel @Inject constructor(
     private fun getDiaries(){
         viewModelScope.launch {
             useCases.getDiaries().collect { diaries ->
+                _state.value = state.value.copy(
+                    diaries = diaries
+                )
+            }
+        }
+    }
+
+    fun searchDiaries(query: String){
+        viewModelScope.launch(Dispatchers.IO){
+            useCases.searchDiariesCase(query).collect{diaries ->
                 _state.value = state.value.copy(
                     diaries = diaries
                 )

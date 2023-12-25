@@ -4,12 +4,13 @@ import android.app.Application
 import androidx.room.Room
 import com.tafakkur.subcompose.data.repository.DiaryRepositoryImpl
 import com.tafakkur.subcompose.data.source.DiaryDatabase
+import com.tafakkur.subcompose.domain.repository.DiaryRepository
 import com.tafakkur.subcompose.domain.usecase.AddDiaryCase
 import com.tafakkur.subcompose.domain.usecase.DeleteDiaryCase
 import com.tafakkur.subcompose.domain.usecase.GetByIdCase
 import com.tafakkur.subcompose.domain.usecase.GetDiariesCase
+import com.tafakkur.subcompose.domain.usecase.SearchDiariesCase
 import com.tafakkur.subcompose.domain.usecase.UseCases
-import com.tafakkur.subcompose.domain.repository.DiaryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,7 +42,8 @@ object Injection {
             getByIdCase = GetByIdCase(repository),
             deleteDiaryCase = DeleteDiaryCase(repository),
             addDiary = AddDiaryCase(repository),
-            getDiaries = GetDiariesCase(repository)
+            getDiaries = GetDiariesCase(repository),
+            searchDiariesCase = SearchDiariesCase(repository)
         )
     }
     @Provides

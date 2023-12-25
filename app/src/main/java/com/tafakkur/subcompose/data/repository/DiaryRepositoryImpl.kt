@@ -12,6 +12,10 @@ class DiaryRepositoryImpl(
         return dao.getDiaries()
     }
 
+    override suspend fun searchDiaries(query: String): Flow<List<Diary>> {
+        return dao.searchDiaries("%$query%")
+    }
+
     override suspend fun getDiaryById(id: Int): Diary? {
         return dao.getDiaryById(id)
     }

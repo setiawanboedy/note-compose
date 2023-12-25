@@ -39,8 +39,10 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            SearchBar(onSearchQueryChanged = {
-                println(it)
+            SearchBar(
+                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+                onSearchQueryChanged = {
+                viewModel.searchDiaries(it)
             })
         },
         floatingActionButton = {

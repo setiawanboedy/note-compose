@@ -20,6 +20,9 @@ interface DiaryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addDiary(diary: Diary)
 
+    @Query("SELECT * FROM diary WHERE title LIKE :query")
+    fun searchDiaries(query: String): Flow<List<Diary>>
+
     @Delete
     suspend fun deleteDiary(diary: Diary)
 }

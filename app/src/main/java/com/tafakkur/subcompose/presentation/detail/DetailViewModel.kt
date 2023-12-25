@@ -6,9 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tafakkur.subcompose.domain.usecase.UseCases
-import com.tafakkur.subcompose.presentation.home.DiaryState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

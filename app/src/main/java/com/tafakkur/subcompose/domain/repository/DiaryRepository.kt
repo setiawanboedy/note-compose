@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface DiaryRepository {
     fun getDiaries(): Flow<List<Diary>>
-
+    suspend fun searchDiaries(query: String): Flow<List<Diary>>
     suspend fun getDiaryById(id: Int): Diary?
 
     suspend fun addDiary(diary: Diary)
