@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tafakkur.subcompose.domain.usecase.UseCases
 import com.tafakkur.subcompose.domain.util.InvalidDiaryException
+import com.tafakkur.subcompose.presentation.utils.DIARY_ID
 import com.tafakkur.subcompose.presentation.utils.DeleteEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -31,7 +32,7 @@ class DetailViewModel @Inject constructor(
 
     init {
         _isLoading.value = isLoading.value.copy(isLoading = true)
-        savedStateHandle.get<Int>("diaryId")?.let { diaryId ->
+        savedStateHandle.get<Int>(DIARY_ID)?.let { diaryId ->
             viewModelScope.launch {
                 useCases.getByIdCase(diaryId)?.also { diary ->
                     _diaryDetail.value = diaryDetail.value.copy(

@@ -41,7 +41,7 @@ fun DiaryItem(
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
@@ -49,17 +49,17 @@ fun DiaryItem(
                 bitmap = diary.image!!.asImageBitmap(),
                 contentDescription = "Item Diary",
                 contentScale = ContentScale.Crop,
-                modifier = modifier.size(width = 140.dp, height = 160.dp)
+                modifier = Modifier.size(width = 140.dp, height = 160.dp)
                 )
             Column(
-                modifier = modifier.padding(12.dp)
+                modifier = Modifier.padding(12.dp)
             ) {
                 Text(text = diary.title,
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Black
                 )
-                Spacer(modifier = modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(5.dp))
                 Text(
                     text = diary.description,
                     fontSize = 16.sp,

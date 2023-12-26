@@ -40,7 +40,7 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             SearchBar(
-                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+                modifier = modifier.padding(top = 8.dp, bottom = 8.dp),
                 onSearchQueryChanged = {
                 viewModel.searchDiaries(it)
             })
@@ -71,7 +71,6 @@ fun HomeScreen(
             }
             Spacer(modifier = Modifier.height(16.dp))
             HomeContent(
-                modifier = modifier,
                 diaryState = state,
                 navigateToDetail = navigateToDetail
             )
@@ -86,12 +85,12 @@ private fun HomeContent(
     navigateToDetail: (Int)-> Unit,
 ){
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ){
         if (diaryState.diaries.isEmpty()){
             item {
                 Text(
-                    modifier = modifier
+                    modifier = Modifier
                         .padding(vertical = 8.dp)
                         .fillMaxSize(),
                     text = "No diaries found",
@@ -99,9 +98,11 @@ private fun HomeContent(
                 )
             }
         }else{
-            items(diaryState.diaries){diary ->
+            items(diaryState.diaries, key = {item ->
+                item.id!!
+            }){diary ->
                 DiaryItem(
-                    modifier = modifier.clickable {
+                    modifier = Modifier.clickable {
                         navigateToDetail(diary.id!!)
                     },
                     diary = diary

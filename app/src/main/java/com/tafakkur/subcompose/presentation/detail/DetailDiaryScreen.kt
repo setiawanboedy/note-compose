@@ -79,6 +79,7 @@ fun DetailDiaryScreen(
     }
 
     Scaffold(
+        modifier = modifier,
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 navigateToEdit(data.id, data.color)
@@ -89,7 +90,6 @@ fun DetailDiaryScreen(
         }
     ) {
         DetailContent(
-            modifier = modifier,
             isLoading = isLoading.isLoading,
             detail = data,
             onBackClick = navigateBack,
@@ -102,7 +102,7 @@ fun DetailDiaryScreen(
 
 @Composable
 private fun DetailContent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     isLoading: Boolean,
     detail: DetailState,
     onDeleteItem: ()->Unit,

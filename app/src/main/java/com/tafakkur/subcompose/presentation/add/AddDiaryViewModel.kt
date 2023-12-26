@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.tafakkur.subcompose.domain.model.Diary
 import com.tafakkur.subcompose.domain.usecase.UseCases
 import com.tafakkur.subcompose.domain.util.InvalidDiaryException
+import com.tafakkur.subcompose.presentation.utils.DIARY_ID
 import com.tafakkur.subcompose.presentation.utils.DiaryEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -46,7 +47,7 @@ class AddDiaryViewModel @Inject constructor(
     private var currentId: Int? = null
 
     init {
-        savedState.get<Int>("diaryId")?.let { itemId ->
+        savedState.get<Int>(DIARY_ID)?.let { itemId ->
             if (itemId != -1){
                 viewModelScope.launch {
                     useCases.getByIdCase(itemId)?.also {diary ->

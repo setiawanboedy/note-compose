@@ -28,7 +28,7 @@ fun AboutScreen(
     modifier: Modifier = Modifier
 ){
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -46,14 +46,14 @@ fun AboutScreen(
             Image(
                 painter = painterResource(id = R.drawable.avatar),
                 contentDescription = "profile image",
-                modifier = modifier.size(135.dp),
+                modifier = Modifier.size(135.dp),
                 contentScale = ContentScale.Crop
             )
 
         }
 
         Text(
-            modifier = modifier.padding(vertical = 8.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
             text = stringResource(R.string.name_budi_setiawan),
             textAlign = TextAlign.Center,
             fontSize = 24.sp,
@@ -61,7 +61,7 @@ fun AboutScreen(
         )
 
         Text(
-            modifier = modifier.padding(vertical = 8.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
             text = stringResource(R.string.email),
             textAlign = TextAlign.Center,
             )

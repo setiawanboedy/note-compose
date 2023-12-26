@@ -27,6 +27,8 @@ import com.tafakkur.subcompose.presentation.detail.DetailDiaryScreen
 import com.tafakkur.subcompose.presentation.home.HomeScreen
 import com.tafakkur.subcompose.presentation.navigation.NavigationItem
 import com.tafakkur.subcompose.presentation.navigation.Screen
+import com.tafakkur.subcompose.presentation.utils.DIARY_COLOR
+import com.tafakkur.subcompose.presentation.utils.DIARY_ID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,20 +64,20 @@ fun DiaryUIApp(
                 route = Screen.Add.route,
                 arguments = listOf(
                     navArgument(
-                        name = "diaryId"
+                        name = DIARY_ID
                     ){
                         type = NavType.IntType
                         defaultValue = -1
                     },
                     navArgument(
-                        "diaryColor"
+                        name = DIARY_COLOR
                     ){
                         type = NavType.IntType
                         defaultValue = -1
                     }
                 )
             ){
-                val color = it.arguments?.getInt("diaryColor") ?: -1
+                val color = it.arguments?.getInt(DIARY_COLOR) ?: -1
 
                 AddDiaryScreen(navigateBack = {
                     navController.navigateUp()
@@ -86,7 +88,7 @@ fun DiaryUIApp(
             composable(
                 route = Screen.DetailDiary.route,
                 arguments = listOf(
-                    navArgument("diaryId"){
+                    navArgument(DIARY_ID){
                     type = NavType.IntType
                 },
                 )

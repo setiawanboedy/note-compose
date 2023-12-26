@@ -108,6 +108,7 @@ fun AddDiaryScreen(
     }
 
     Scaffold(
+        modifier = modifier,
         snackbarHost = {
             SnackbarHost(hostState = snackBarState){
                 Snackbar(
@@ -224,17 +225,17 @@ fun AddDiaryScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
             Row(
-                modifier = modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
                 Column(
-                    modifier = modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
 
                 ) {
 
-                    Box(modifier = modifier
+                    Box(modifier = Modifier
                         .size(100.dp)
                         .padding(20.dp)
                         .border(
@@ -245,7 +246,7 @@ fun AddDiaryScreen(
                             launcher.launch("image/*")
                         }){
                         Icon(
-                            modifier = modifier.align(Alignment.Center),
+                            modifier = Modifier.align(Alignment.Center),
                             imageVector = Icons.Default.Add,
                             tint = Color.Black,
                             contentDescription = "add image")
@@ -269,7 +270,7 @@ fun AddDiaryScreen(
                                     bitmap = btm.asImageBitmap(),
                                     contentDescription =null,
                                     contentScale = ContentScale.Crop,
-                                    modifier = modifier
+                                    modifier = Modifier
                                         .height(200.dp)
                                         .width(width = 200.dp)
                                         .clip(RoundedCornerShape(size = 10.dp)),
@@ -281,7 +282,7 @@ fun AddDiaryScreen(
                             bitmap = bitmap.asImageBitmap(),
                             contentDescription =null,
                             contentScale = ContentScale.Crop,
-                            modifier = modifier
+                            modifier = Modifier
                                 .height(200.dp)
                                 .width(width = 200.dp)
                                 .clip(RoundedCornerShape(size = 10.dp)),
