@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Sub Compose"
+rootProject.name = "NoteApp"
 include(":app")
  

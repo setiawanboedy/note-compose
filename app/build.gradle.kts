@@ -2,18 +2,17 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-//    id("dagger.hilt.android.plugin")
     id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.tafakkur.subcompose"
-    compileSdk = 34
+    namespace = "com.tafakkur.noteapp"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.tafakkur.subcompose"
-        minSdk = 26
-        targetSdk = 34
+        applicationId = "com.tafakkur.noteapp"
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
