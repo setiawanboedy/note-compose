@@ -13,6 +13,7 @@ sealed class AddNoteEvent {
 
     data class PickImage(val uri: Uri?): AddNoteEvent()
     data class GetImage(val bitmap: Bitmap?): AddNoteEvent()
+    object ClearImage: AddNoteEvent()
 
     object SaveNote: AddNoteEvent()
 }

@@ -15,9 +15,7 @@ class AddNoteCase(
         if (note.description.isBlank()){
             throw InvalidNoteException("Description cannot empty")
         }
-        if (note.image == null){
-            throw InvalidNoteException("Image must be added")
-        }
+        // Image is optional - no validation needed
         repository.addNote(note)
     }
 }

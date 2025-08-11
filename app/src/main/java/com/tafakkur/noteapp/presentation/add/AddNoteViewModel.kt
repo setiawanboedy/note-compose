@@ -45,6 +45,7 @@ class AddNoteViewModel @Inject constructor(
     val noteEvent = _noteEvent.asSharedFlow()
 
     private var currentId: Int? = null
+    val currentNoteId: Int? get() = currentId
 
     init {
         savedState.get<Int>(NOTE_ID)?.let { itemId ->
@@ -100,6 +101,10 @@ class AddNoteViewModel @Inject constructor(
             }
             is AddNoteEvent.GetImage -> {
                 _bitmap.value = event.bitmap
+            }
+            is AddNoteEvent.ClearImage -> {
+                _bitmap.value = null
+                _imageUri.value = null
             }
 
             is AddNoteEvent.SaveNote -> {
