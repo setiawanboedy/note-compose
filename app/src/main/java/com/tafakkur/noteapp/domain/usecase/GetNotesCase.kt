@@ -4,7 +4,7 @@ import com.tafakkur.noteapp.domain.model.Note
 import com.tafakkur.noteapp.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetDiariesCase(
+class GetNotesCase(
     private val repository: NoteRepository
 ) {
     operator fun invoke(): Flow<List<Note>> {

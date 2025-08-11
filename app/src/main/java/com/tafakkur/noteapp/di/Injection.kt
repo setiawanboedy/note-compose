@@ -8,8 +8,8 @@ import com.tafakkur.noteapp.domain.repository.NoteRepository
 import com.tafakkur.noteapp.domain.usecase.AddNoteCase
 import com.tafakkur.noteapp.domain.usecase.DeleteNoteCase
 import com.tafakkur.noteapp.domain.usecase.GetByIdCase
-import com.tafakkur.noteapp.domain.usecase.GetDiariesCase
-import com.tafakkur.noteapp.domain.usecase.SearchDiariesCase
+import com.tafakkur.noteapp.domain.usecase.GetNotesCase
+import com.tafakkur.noteapp.domain.usecase.SearchNotesCase
 import com.tafakkur.noteapp.domain.usecase.UseCases
 import dagger.Module
 import dagger.Provides
@@ -43,8 +43,8 @@ object Injection {
             getByIdCase = GetByIdCase(repository),
             deleteNoteCase = DeleteNoteCase(repository),
             addNote = AddNoteCase(repository),
-            getDiaries = GetDiariesCase(repository),
-            searchDiariesCase = SearchDiariesCase(repository)
+            getDiaries = GetNotesCase(repository),
+            searchDiariesCase = SearchNotesCase(repository)
         )
     }
     @Provides

@@ -4,7 +4,7 @@ import com.tafakkur.noteapp.domain.model.Note
 import com.tafakkur.noteapp.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
-class SearchDiariesCase(
+class SearchNotesCase(
     private val repository: NoteRepository
 ) {
     suspend operator fun invoke(query: String): Flow<List<Note>> {
