@@ -3,12 +3,9 @@ package com.tafakkur.noteapp.presentation.detail
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -48,11 +45,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.tafakkur.noteapp.presentation.components.DeleteDialog
 import com.tafakkur.noteapp.presentation.utils.DeleteEvent
-import com.tafakkur.noteapp.ui.theme.Black
 import kotlinx.coroutines.flow.collectLatest
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -68,7 +63,11 @@ fun DetailNoteScreen(
     val isLoading = viewModel.isLoading.value
 
     val snackBarState = remember { SnackbarHostState() }
-    val context = LocalContext.current
+
+    // State untuk delete dialog
+    var showDialog by remember {
+        mutableStateOf(false)
+    }
 
     LaunchedEffect(key1 = true){
         viewModel.noteEvent.collectLatest { event ->
@@ -106,8 +105,8 @@ fun DetailNoteScreen(
                 },
                 actions = {
                     IconButton(
-                        onClick = { 
-                            viewModel.onEvent(DetailNoteEvent.DeleteNote)
+                        onClick = {
+                            showDialog = true
                         }
                     ) {
                         Icon(
@@ -142,10 +141,14 @@ fun DetailNoteScreen(
             modifier = Modifier.padding(innerPadding),
             isLoading = isLoading.isLoading,
             detail = data,
-            onBackClick = navigateBack,
-            onDeleteItem = {
+        )
+        DeleteDialog(
+            showDialog = showDialog,
+            onDismiss = { showDialog = false },
+            confirm = {
                 viewModel.onEvent(DetailNoteEvent.DeleteNote)
-            }
+            },
+            cancel = { showDialog = false }
         )
     }
 }
@@ -155,12 +158,8 @@ private fun DetailContent(
     modifier: Modifier = Modifier,
     isLoading: Boolean,
     detail: DetailState,
-    onDeleteItem: ()->Unit,
-    onBackClick: ()->Unit
 ){
-    var showDialog by remember {
-        mutableStateOf(false)
-    }
+
 
     Column(
         modifier = modifier
@@ -218,12 +217,7 @@ private fun DetailContent(
                 )
 
                 // Delete Dialog
-                DeleteDialog(
-                    showDialog = showDialog,
-                    onDismiss = { showDialog = false },
-                    confirm = onDeleteItem,
-                    cancel = { showDialog = false }
-                )
+
             }
     }
 }

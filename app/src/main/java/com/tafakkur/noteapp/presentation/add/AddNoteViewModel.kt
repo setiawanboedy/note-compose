@@ -103,7 +103,7 @@ class AddNoteViewModel @Inject constructor(
 
             is AddNoteEvent.ChangeDescriptionFocus -> {
                 _description.value = _description.value.copy(
-                    isHintVisible = !event.focusState.isFocused && title.value.text.isBlank()
+                    isHintVisible = !event.focusState.isFocused && _description.value.text.isBlank()
                 )
             }
 
