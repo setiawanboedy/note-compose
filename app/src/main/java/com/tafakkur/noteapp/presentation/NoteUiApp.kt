@@ -1,6 +1,10 @@
 package com.tafakkur.noteapp.presentation
 
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
@@ -40,11 +44,15 @@ fun NoteUIApp(
     val currentRoute = navBackStackEntry?.destination?.route
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.DetailNote.route && currentRoute != Screen.Add.route){
-                BottomBar(navController)
-            }
+            // BottomBar disabled
+            // if (currentRoute != Screen.DetailNote.route && currentRoute != Screen.Add.route){
+            //     BottomBar(navController)
+            // }
         },
         modifier = modifier
+            .fillMaxSize()
+            .windowInsetsPadding(WindowInsets.statusBars),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) {innerPadding ->
         NavHost(navController = navController, startDestination = Screen.Home.route, modifier = Modifier.padding(innerPadding)){
             composable(Screen.Home.route){

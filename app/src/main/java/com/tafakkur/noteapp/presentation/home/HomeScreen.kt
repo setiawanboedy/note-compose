@@ -72,17 +72,17 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToAdd,
-                containerColor = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(16.dp),
-                modifier = Modifier.size(64.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add Note",
-                    modifier = Modifier.size(28.dp)
-                )
-            }
+                    onClick = navigateToAdd,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.size(48.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add Note",
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
         }
     ) { innerPadding ->
         Column(
