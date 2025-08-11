@@ -102,6 +102,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     implementation("io.coil-kt:coil-compose:2.1.0")
+    
+    // SwipeRefresh
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.32.0")
 }
 kapt {
     correctErrorTypes = true

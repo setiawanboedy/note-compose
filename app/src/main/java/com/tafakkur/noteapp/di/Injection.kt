@@ -28,7 +28,6 @@ object Injection {
             NoteDatabase::class.java,
             NoteDatabase.DATABASE_NAME
         )
-            .createFromAsset("note_db.sql")
             .build()
     }
 
