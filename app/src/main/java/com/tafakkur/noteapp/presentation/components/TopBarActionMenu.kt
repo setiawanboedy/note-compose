@@ -183,7 +183,7 @@ private fun SearchDialog(
                 OutlinedTextField(
                     value = localQuery,
                     onValueChange = { localQuery = it },
-                    label = { Text("Search by title or content") },
+                    label = { Text("Title or content") },
                     placeholder = { Text("Enter keywords...") },
                     leadingIcon = {
                         Icon(Icons.Default.Search, contentDescription = null)

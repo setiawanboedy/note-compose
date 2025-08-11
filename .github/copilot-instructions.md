@@ -1,50 +1,43 @@
-# Fitur Manajemen Note
+## Text Formatting
 
-- **Sort & Filter**: Sorting berdasarkan tanggal, judul, atau kategori
-- **Categories/Tags**: Mengelompokkan note berdasarkan kategori
-- **Favorite Notes**: Menandai note penting
-- **Archive/Trash**: Soft delete dengan kemampuan restore
-- **Duplicate Note**: Copy note yang sudah ada
+- **Bold, Italic, Underline**: Basic text styling
+- **Text Color**: Pilihan warna untuk teks
+- **Text Size**: Pilihan ukuran font (Small, Normal, Large, Extra Large)
+- **Alignment**: Left, Center, Right alignment
+- **Lists**: Bullet points dan numbered lists
+- **Strikethrough**: Teks dengan garis coret
 
-# Fitur UI/UX Enhancement
+## Advanced Text Features
 
-- **Dark Mode**: Theme switching
-- **Grid/List View Toggle**: Pilihan tampilan
-- **Pull to Refresh**: Refresh data dengan swipe
-- **Swipe Actions**: Delete/edit dengan swipe gesture
-- **Empty State Illustration**: Gambar untuk kondisi kosong
-- **Loading States**: Skeleton loading atau progress indicator
+- **Headers**: H1, H2, H3 hierarchy
+- **Links**: Clickable URL links
 
-# Fitur Search & Organization
+## Image Features
 
-- **Advanced Search**: Filter berdasarkan tanggal, kategori, dll
-- **Recent Searches**: Menyimpan riwayat pencarian
-- **Search Suggestions**: Auto-complete saat mengetik
-- **Quick Filters**: Filter cepat (Today, Week, Month)
+- **Multiple Images**: Attachment lebih dari satu gambar
+- **Image Gallery**: Swipeable gallery view
+- **Image Editing**: Basic crop, rotate, filter
+- **Image Compression**: Auto-compress untuk menghemat storage
+- **Image from Camera**: Direct camera capture
 
-# Fitur Export & Backup
+## Additional
 
-- **Export to PDF/TXT**: Export individual atau bulk
-- **Cloud Sync**: Backup ke Google Drive/Dropbox
-- **Import/Export Database**: Backup lokal
+- **Stickers/Emojis**: Elemen visual yang menarik
 
-# Fitur Security
+## Productivity Features
 
-- **App Lock**: PIN/Password/Biometric
-- **Note Lock**: Encrypt note tertentu
-- **Auto-lock**: Lock otomatis setelah waktu tertentu
+- **Checkboxes/Todo Lists**: Interactive task management
+- **Tables**: Simple table creation
+- **Dividers**: Visual content separation
+- **Collapsible Sections**: Expandable content blocks
+- **Page Breaks**: Multi-page notes
 
-# Fitur Productivity
+## Templates & Quick Actions
 
-- **Reminders**: Notifikasi untuk note tertentu
-- **Note Templates**: Template siap pakai
-- **Voice Notes**: Record audio
-- **Image Attachment**: Tambah foto ke note
-- **Rich Text Editor**: Bold, italic, bullet points
-- **Note Statistics**: Word count, creation date, dll
-
-# Fitur Sharing
-
-- **Share Note**: Via social media, email, dll
-- **Collaborative Notes**: Share dengan user lain
-- **QR Code Share**: Generate QR untuk sharing
+- **Note Templates**:
+    - Meeting Notes
+    - Daily Journal
+    - Shopping List
+    - Study Notes
+    - Project Planning
+- **Quick Insert**: Date, time, location stamps

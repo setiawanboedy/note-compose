@@ -6,6 +6,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,6 +38,12 @@ class AddNoteViewModel @Inject constructor(
 
     private val _description = mutableStateOf(TextFieldState(hint = "Description"))
     val description: State<TextFieldState> = _description
+
+    private val _richDescription = mutableStateOf(TextFieldValue(""))
+    val richDescription: State<TextFieldValue> = _richDescription
+
+    private val _isRichTextMode = mutableStateOf(false)
+    val isRichTextMode: State<Boolean> = _isRichTextMode
 
     private val _color = mutableIntStateOf(Note.noteColors.random().toArgb())
     val color: State<Int> = _color
@@ -79,6 +86,13 @@ class AddNoteViewModel @Inject constructor(
             is AddNoteEvent.EnterDescription -> {
                 _description.value = description.value.copy(
                     text = event.value
+                )
+            }
+            is AddNoteEvent.EnterRichDescription -> {
+                _richDescription.value = event.value
+                // Also update the regular description for saving
+                _description.value = description.value.copy(
+                    text = event.value.text
                 )
             }
             is AddNoteEvent.ChangeTitleFocus -> {
