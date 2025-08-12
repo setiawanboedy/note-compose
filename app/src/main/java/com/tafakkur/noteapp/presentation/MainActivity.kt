@@ -17,8 +17,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import com.tafakkur.noteapp.ui.theme.noteappTheme
+import com.tafakkur.noteapp.ui.theme.NoteAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +33,7 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         
         setContent {
-            noteappTheme {
+            NoteAppTheme {
                 val view = LocalView.current
                 val darkTheme = isSystemInDarkTheme()
                 
@@ -60,7 +59,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    noteappTheme {
+    NoteAppTheme {
         NoteUIApp()
     }
 }

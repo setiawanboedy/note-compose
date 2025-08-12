@@ -243,7 +243,7 @@ private fun HomeContent(
                 AnimatedNoteItem(
                     modifier = Modifier
                         .clickable { navigateToDetail(note.id!!) }
-                        .animateItemPlacement()
+                        .animateItem()
                 ) {
                     NoteItem(note = note)
                 }
